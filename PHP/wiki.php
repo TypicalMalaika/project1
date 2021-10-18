@@ -22,8 +22,8 @@ $country_display = [];
 
 
 foreach ($output['data'] as $array) {
-    $country['description'] = $array['summary'];
-    $country['link'] = $array['wikipediaUrl'];
+    $country['Title'] = $array['title'];
+    $country['Wiki Link'] = $array['wikipediaUrl'];
 
     array_push($country_display, $country);
 }

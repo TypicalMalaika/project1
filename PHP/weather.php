@@ -15,21 +15,12 @@ $decode = json_decode($result,true);
 $output['status']['code'] = "200";
 $output['status']['name'] = "ok";
 $output['status']['description'] = "success";
-$output['data'] = $decode['weatherObservation'];
+$output['data']['Date and Time'] = $decode['weatherObservation']['datetime'];
+$output['data']['Clouds'] = $decode['weatherObservation']['clouds'];
+$output['data']['Humidity'] = $decode['weatherObservation']['humidity'];
+$output['data']['Temperature'] = $decode['weatherObservation']['temperature'];
+$output['data']['Wind Speed'] = $decode['weatherObservation']['windSpeed'];
 
-//echo json_encode($output);
-echo json_encode($output['data']['datetime']);
-//[0].data.clouds
-/*
-$country_display = [];
+echo json_encode($output);
 
-foreach ($output['data'] as $array) {
-    $country['dateTime'] = $array['datetime'];
-
-    array_push($country_display, $country);
-}
-
-//echo $country_display;
-echo json_encode($country_display);
-*/
 ?>

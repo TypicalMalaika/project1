@@ -7,26 +7,75 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="CSS/stylesheet.css" />
-    <link data-require="bootstrap-css" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+    <link data-require="bootstrap-css" data-semver="3.3.6" rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+
 </head>
 
 <body>
     <div id="map">
+
+
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Open Modal</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div>
+                    <table>
+                        <th>Country Information</th>
+                        <tr id='countryInfo'>
+                        </tr>
+                    </table>
+                    <br>
+                    <table>
+                        <th>Weather</th>
+                        <tr id='weather'>
+                        </tr>
+                    </table>
+                    <br>
+                    <table>
+                        <th>Time Zone</th>
+                        <tr id='timeZone'>
+                        </tr>
+                    </table>
+                    <br>
+                    <table>
+                        <th>Area</th>
+                        <tr id='area'>
+                        </tr>
+                    </table>
+                    <br>
+                    <table>
+                        <th>Wiki Links</th>
+                        <tr id='wiki'>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
         <form action="myMap2.html" method="POST">
             <table>
                 <select id="countryChosen" name="countryChosen"></select>
-                <input type='submit' value='submit' id="countrybtn" >
-                <button id="test">Test</button>
-               
+                <i class="fal fa-user"></i> <!-- uses light style -->
             </table>
         </form>
-    </div>
-  
 
 
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="JS/script.js"></script>
-    <script src="JS/jQuery.js"></script>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="./CSS/easy-button.css">
+        <!--here-->
+        <link href="./fontAwesome/css/all.css" rel="stylesheet"> <!--load all styles -->
+        <script defer src="./fontAwesome/js/all.js"></script> <!--load all styles -->
+        <script src="./JS/easy-button.js"></script>
+        <script src="JS/jQuery.js"></script>
+        <script src="JS/script.js"></script>
 
 </body>
 

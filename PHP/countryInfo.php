@@ -22,10 +22,10 @@ $output['data'] = $decode['geonames'];
 $country_display = [];
 foreach ($output['data'] as $array) {
     
-    $country['countryName'] = $array['countryName'];
-    $country['captial'] = $array['capital'];
-    $country['population'] = $array['population'];
-    $country['currencyCode'] = $array['currencyCode'];
+    $country['Country Name'] = $array['countryName'];
+    $country['Capital'] = $array['capital'];
+    $country['Population'] = $array['population'];
+    $country['Currency Code'] = $array['currencyCode'];
 
     array_push($country_display, $country);
 }
