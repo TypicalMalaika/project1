@@ -18,8 +18,6 @@ $output['status']['description'] = "success";
 $output['data'] = $decode['geonames'];
 
 $country_display = [];
-//echo json_encode($output);
-
 
 foreach ($output['data'] as $array) {
     $country['Title'] = $array['title'];
@@ -28,7 +26,6 @@ foreach ($output['data'] as $array) {
     array_push($country_display, $country);
 }
 
-//echo $country_display;
 echo json_encode($country_display);
 
 ?>

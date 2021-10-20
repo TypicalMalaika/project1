@@ -9,11 +9,9 @@ window.onload = function () {
     let lng = null;
 
     navigator.geolocation.getCurrentPosition(function (position) {
-        //finds current user location
         lat = position.coords.latitude;
         lng = position.coords.longitude;
-        //shows current location
-        //var currrentLocation = myMap.locate({ setView: [lat, lng], maxZoom: 10 })
+        var currrentLocation = myMap.locate({ setView: [lat, lng], maxZoom: 10 })
         $.post('./PHP/currentLocation.php', { postlat: lat, postlng: lng },
             function (data) {
                 result = JSON.parse("[" + data + "]");
@@ -27,7 +25,6 @@ window.onload = function () {
                 });
                 geojsonLayer.addTo(myMap);
             });
-
     });
 
     $.ajax({
@@ -72,11 +69,10 @@ window.onload = function () {
                         displayInfo('#countryInfo');
                     });
 
-
                 $.post('./PHP/wiki.php', { postlat: lat, postlng: lng },
                     function (data) {
                         result = JSON.parse("[" + data + "]");
-                        answer = result[0]; //changing variables for ease of use
+                        answer = result[0];
                         for (var x = 0; x < answer.length; x++) {
                             result = answer[x];
                             displayInfo('#wiki');
@@ -89,12 +85,14 @@ window.onload = function () {
                         result = (result[0]['data']);
                         displayInfo('#weather');
                     });
+
                 $.post('./PHP/timeZone.php', { postlat: lat, postlng: lng },
                     function (data) {
                         result = JSON.parse("[" + data + "]");
                         result = (result[0]['data']);
                         displayInfo('#timeZone');
                     });
+
                 $.post('./PHP/area.php', { postlat: lat, postlng: lng },
                     function (data) {
                         result = JSON.parse("[" + data + "]");
@@ -131,89 +129,32 @@ window.onload = function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 alert(errorThrown, textStatus);
             }
-        
+
         });
-        //here
         return false;
     });
 
-    
-var myvar = '<div>'+
-'                    <table>'+
-'                        <th>Country Information</th>'+
-'                        <tr id=\'countryInfo\'>'+
-'                        </tr>'+
-'                    </table>'+
-'                    <br>'+
-'                    <table>'+
-'                        <th>Weather</th>'+
-'                        <tr id=\'weather\'>'+
-'                        </tr>'+
-'                    </table>'+
-'                    <br>'+
-'                    <table>'+
-'                        <th>Time Zone</th>'+
-'                        <tr id=\'timeZone\'>'+
-'                        </tr>'+
-'                    </table>'+
-'                    <br>'+
-'                    <table>'+
-'                        <th>Area</th>'+
-'                        <tr id=\'area\'>'+
-'                        </tr>'+
-'                    </table>'+
-'                    <br>'+
-'                    <table>'+
-'                        <th>Wiki Links</th>'+
-'                        <tr id=\'wiki\'>'+
-'                        </tr>'+
-'                    </table>'+
-'                </div>';
-
-
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    
-    var helloPopup = L.popup().setContent(myvar);
-
-    L.easyButton('fas fa-globe', function(btn, map){
-        helloPopup.setLatLng(map.getCenter()).openOn(map);
+    L.easyButton('fas fa-globe', function () {
+        modal.style.display = 'block';
     }).addTo(myMap);
 
-    
+    const modal = document.querySelector('#my-modal');
+    const closeBtn = document.querySelector('.close');
 
-    //myMap.on('click', function(e) {
-    //  alert("hello");
-    //});
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', outsideClick);
 
-    /*
+    function openModal() {
+        modal.style.display = 'block';
+    }
 
-    $('#test').click(function () {
-        var popup = L.popup()
-            .setLatLng(latlng)
-            .setContent('<p>Hello world!<br />This is a nice popup.</p>')
-            .openOn(myMap);
-    })
+    function closeModal() {
+        modal.style.display = 'none';
+    }
 
-    
-     L.easyButton('fa-gbp', function () {
-         map.setView([55, -2], 4);
-     }).addTo(myMap)
- */
-
+    function outsideClick(e) {
+        if (e.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
 }

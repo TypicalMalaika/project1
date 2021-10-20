@@ -7,24 +7,32 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="CSS/stylesheet.css" />
+    <link rel="stylesheet" href="./CSS/easy-button.css">
+    <link href="./fontAwesome/css/all.css" rel="stylesheet">
     <link data-require="bootstrap-css" data-semver="3.3.6" rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
 
 </head>
 
 <body>
-    <div id="map">
-
-
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left" action="myMap2.html" method="POST">
+                <table>
+                    <select class="form-control" id="countryChosen" name="countryChosen"></select>                
+                </table>
+            </form>        
+          </div>
+        </div>
+      </nav>
+    
+    <div id="map"></div>
+    <div id="my-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
                 <span class="close">&times;</span>
+
                 <div>
                     <table>
                         <th>Country Information</th>
@@ -57,27 +65,14 @@
                     </table>
                 </div>
             </div>
-
         </div>
+    </div>
 
-        <form action="myMap2.html" method="POST">
-            <table>
-                <select id="countryChosen" name="countryChosen"></select>
-                <!--<i class="fal fa-user"></i> <!-- uses light style -->
-            </table>
-        </form>
-
-
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <link rel="stylesheet" href="./CSS/easy-button.css">
-        <!--here-->
-        <link href="./fontAwesome/css/all.css" rel="stylesheet">
-        <!--load all styles -->
-        <script defer src="./fontAwesome/js/all.js"></script>
-        <!--load all styles -->
-        <script src="./JS/easy-button.js"></script>
-        <script src="JS/jQuery.js"></script>
-        <script src="JS/script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script defer src="./fontAwesome/js/all.js"></script>
+    <script src="./JS/easy-button.js"></script>
+    <script src="JS/jQuery.js"></script>
+    <script src="JS/script.js"></script>
 
 </body>
 

@@ -1,9 +1,7 @@
 <?php
 
-// Read the JSON file 
 $strJsonFileContents = file_get_contents("../JS/countryBorders.geo.json");
 
-// Decode the JSON file
 $array  = json_decode($strJsonFileContents,true); 
 
 $country_list = [];
