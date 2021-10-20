@@ -131,37 +131,71 @@ window.onload = function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 alert(errorThrown, textStatus);
             }
-
+        
         });
         //here
         return false;
     });
 
-    function modal() {
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("myBtn");
-        var span = document.getElementsByClassName("close")[0];
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
+    
+var myvar = '<div>'+
+'                    <table>'+
+'                        <th>Country Information</th>'+
+'                        <tr id=\'countryInfo\'>'+
+'                        </tr>'+
+'                    </table>'+
+'                    <br>'+
+'                    <table>'+
+'                        <th>Weather</th>'+
+'                        <tr id=\'weather\'>'+
+'                        </tr>'+
+'                    </table>'+
+'                    <br>'+
+'                    <table>'+
+'                        <th>Time Zone</th>'+
+'                        <tr id=\'timeZone\'>'+
+'                        </tr>'+
+'                    </table>'+
+'                    <br>'+
+'                    <table>'+
+'                        <th>Area</th>'+
+'                        <tr id=\'area\'>'+
+'                        </tr>'+
+'                    </table>'+
+'                    <br>'+
+'                    <table>'+
+'                        <th>Wiki Links</th>'+
+'                        <tr id=\'wiki\'>'+
+'                        </tr>'+
+'                    </table>'+
+'                </div>';
 
-        span.onclick = function () {
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
             modal.style.display = "none";
         }
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
     }
-    var helloPopup = L.popup().setContent(modal());
 
-    L.easyButton('fas fa-globe', function (btn, map) {
+    
+    var helloPopup = L.popup().setContent(myvar);
+
+    L.easyButton('fas fa-globe', function(btn, map){
         helloPopup.setLatLng(map.getCenter()).openOn(map);
     }).addTo(myMap);
 
-
+    
 
     //myMap.on('click', function(e) {
     //  alert("hello");
