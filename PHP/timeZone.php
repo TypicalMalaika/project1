@@ -18,6 +18,8 @@ $output['status']['description'] = "success";
 $output['data']['Sunrise'] = $decode['sunrise'];
 $output['data']['Sunset'] = $decode['sunset'];
 
+//$date("d/m/Y", strtotime($output['data']['Sunrise'] = $decode['sunrise']));
+
 echo json_encode($output);
 
 ?>

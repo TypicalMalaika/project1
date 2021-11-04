@@ -90,6 +90,7 @@ window.onload = function () {
                     function (data) {
                         result = JSON.parse("[" + data + "]");
                         result = (result[0]['data']);
+                        //console.log(result['Sunrise'].substring(0,10));
                         displayInfo('#timeZone');
                     });
 
@@ -105,21 +106,20 @@ window.onload = function () {
                     if (layer.myTag && layer.myTag === "myGeoJSON") {
                         myMap.removeLayer(layer);
                     }
+
                 });
-
                 geojsonLayer = L.geoJSON(result, {
-
                     style: function (feature) {
                         return { color: "#ff0000" };
                     },
                     onEachFeature: function (feature, layer) {
                         layer.myTag = "myGeoJSON"
-                    }
+                    },
                 });
 
                 function displayInfo(tableId) {
                     for (const [key, value] of Object.entries(result)) {
-                        var row = $('<tr><td><b>' + key + '</b>: ' + value + '</td> + <td>');
+                        var row = $('<tr><td><b>' + key + '</b>:<a href="' + value + '"></td> + <td>');
                         $(tableId).append(row);
                     }
                 }

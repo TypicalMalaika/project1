@@ -5,7 +5,7 @@ $strJsonFileContents = file_get_contents("../JS/countryBorders.geo.json");
 
     $countryChosen = $_POST['countryChosen'];
     foreach($array["features"] as $feature){ // we start looping over the array containing countries' data
-        if($feature ['properties']["iso_a3"] == $countryChosen){ 
+        if($feature ['properties']["iso_a2"] == $countryChosen){ 
             echo json_encode($feature);
             break;
         }
